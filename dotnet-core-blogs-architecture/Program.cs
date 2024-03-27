@@ -1,3 +1,9 @@
+using Microsoft.AspNetCore.Builder;
+using dotnet_core_blogs_architecture.infrastructure;
+using Microsoft.Extensions.Caching.Distributed;
+using static System.Net.Mime.MediaTypeNames;
+using dotnet_core_blogs_architecture.infrastructure.RateLimiter;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDistributedMemoryCache(); // Use in-memory cache for demo purposes, replace with Redis in production
+builder.Services.AddSingleton<RateLimitMiddleware>(sp =>
+{
+    var cache = sp.GetRequiredService<IDistributedCache>();
+    // Configure time window and max requests here or load from configuration
+    var timeWindow = TimeSpan.FromMinutes(1); // Example: 1 minute
+    var maxRequests = 100; // Example: 100 requests per minute
+    return new RateLimitMiddleware(httpContext => Task.CompletedTask, cache, timeWindow, maxRequests);
+});
 
 var app = builder.Build();
 
@@ -19,6 +34,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<RateLimitMiddleware>();
 
 app.MapControllers();
 
