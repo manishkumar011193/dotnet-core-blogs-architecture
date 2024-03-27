@@ -1,0 +1,6 @@
+@dotnet_core_blogs_architecture_HostAddress = http://localhost:5185
+
+GET {{dotnet_core_blogs_architecture_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
