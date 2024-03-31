@@ -1,4 +1,4 @@
-using dotnet_core_blogs_architecture.infrastructure.RateLimiter;
+using dotnet_core_blogs_architecture.Data.RateLimiter;
 using Microsoft.Extensions.Caching.Distributed;
 
 var builder = WebApplication.CreateBuilder(args);

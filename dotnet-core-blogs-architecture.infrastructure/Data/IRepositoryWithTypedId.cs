@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Storage;
-using dotnet_core_blogs_architecture.infrastructure.Models;
+using dotnet_core_blogs_architecture.Data.Models;
 
-namespace dotnet_core_blogs_architecture.infrastructure.Data
+namespace dotnet_core_blogs_architecture.Data.Data
 {
     public interface IRepositoryWithTypedId<T, TId> where T : IEntityWithTypedId<TId>
     {

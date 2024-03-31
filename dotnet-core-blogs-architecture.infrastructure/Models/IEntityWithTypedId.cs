@@ -1,4 +1,4 @@
-﻿namespace dotnet_core_blogs_architecture.infrastructure.Models
+﻿namespace dotnet_core_blogs_architecture.Data.Models
 {
     public interface IEntityWithTypedId<TId>
     {

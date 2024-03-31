@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace dotnet_core_blogs_architecture.infrastructure.Helpers
+namespace dotnet_core_blogs_architecture.Data.Helpers
 {
     public static class EnumHelper
     {

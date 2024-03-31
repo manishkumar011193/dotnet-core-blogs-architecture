@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace dotnet_core_blogs_architecture.infrastructure.Helpers
+namespace dotnet_core_blogs_architecture.Data.Helpers
 {
     public static class StringHelper
     {

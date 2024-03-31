@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace dotnet_core_blogs_architecture.infrastructure.Helpers
+namespace dotnet_core_blogs_architecture.Data.Helpers
 {
     //code from: http://social.msdn.microsoft.com/Forums/en/async/thread/163ef755-ff7b-4ea5-b226-bbe8ef5f4796
     public static class AsyncHelper

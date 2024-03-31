@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Builder;
-using dotnet_core_blogs_architecture.infrastructure;
+using dotnet_core_blogs_architecture.Data.Data;
+using dotnet_core_blogs_architecture.Data.RateLimiter;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
-using static System.Net.Mime.MediaTypeNames;
-using dotnet_core_blogs_architecture.infrastructure.RateLimiter;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +21,7 @@ builder.Services.AddSingleton<RateLimitMiddleware>(sp =>
     return new RateLimitMiddleware(httpContext => Task.CompletedTask, cache, timeWindow, maxRequests);
 });
 
+builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

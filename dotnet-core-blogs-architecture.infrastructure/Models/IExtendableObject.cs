@@ -1,4 +1,4 @@
-﻿namespace dotnet_core_blogs_architecture.infrastructure.Models
+﻿namespace dotnet_core_blogs_architecture.Data.Models
 {
     /// <summary>
     /// Defines a JSON formatted string property to extend an object/entity.
