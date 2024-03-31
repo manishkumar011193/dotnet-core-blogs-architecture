@@ -1,6 +1,7 @@
 ﻿using dotnet_core_blogs_architecture.blogs.Repository.Specifications;
 using dotnet_core_blogs_architecture.blogs.Specification;
 using dotnet_core_blogs_architecture.Data.Data;
+using dotnet_core_blogs_architecture.infrastructure.Data;
 using FluentValidation;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.Comment.Commands.Update

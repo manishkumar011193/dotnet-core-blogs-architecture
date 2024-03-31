@@ -1,7 +1,7 @@
 ﻿using Ardalis.Specification;
-using dotnet_core_blogs_architecture.Data;
+using dotnet_core_blogs_architecture.infrastructure	;
 
-namespace  DT.Shared.Repository.Interfaces;
+namespace dotnet_core_blogs_architecture.infrastructure.Interfaces;
 
 public interface IReadRepository<T> : IReadRepositoryBase<T> where T : class 
 {

@@ -1,4 +1,4 @@
-﻿namespace dotnet_core_blogs_architecture.Data.Models
+﻿namespace dotnet_core_blogs_architecture.infrastructure.Models
 {
     /// <summary>
     ///     Provides a base class for your objects which will be persisted to the database.

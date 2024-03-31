@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 
-namespace dotnet_core_blogs_architecture.Data.Helpers
+namespace dotnet_core_blogs_architecture.infrastructure.Helpers
 {
     public static class CurrencyHelper
     {

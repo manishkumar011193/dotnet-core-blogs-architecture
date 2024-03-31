@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using dotnet_core_blogs_architecture.blogs.Mediator.Post.Shared;
+using dotnet_core_blogs_architecture.blogs.Mediator.User.Commands.Shared;
+using dotnet_core_blogs_architecture.blogs.Mediator.User.Shared;
 using dotnet_core_blogs_architecture.blogs.Specification;
 using dotnet_core_blogs_architecture.Data.Data;
 using dotnet_core_blogs_architecture.Data.Results;
-using DT.Identity.Core.User.Commands.Shared;
+using dotnet_core_blogs_architecture.infrastructure.Data;
 using MediatR;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.User.Commands.Create;

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace dotnet_core_blogs_architecture.Data.Models
+namespace dotnet_core_blogs_architecture.infrastructure.Models
 {
     public abstract class ValidatableObject
     {

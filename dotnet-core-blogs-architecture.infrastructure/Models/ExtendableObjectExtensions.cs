@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using dotnet_core_blogs_architecture.infrastructure.Helpers;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using dotnet_core_blogs_architecture.Data.Helpers;
 
-namespace dotnet_core_blogs_architecture.Data.Models
+namespace dotnet_core_blogs_architecture.infrastructure.Models
 {
     public static class ExtendableObjectExtensions
     {

@@ -1,20 +1,19 @@
 ﻿using AutoMapper;
-using DT.Identity.Core.User.Commands.Shared;
-using DT.Identity.Core.User.Shared;
-using DT.Identity.Repository.Specifications.User;
-using DT.Shared.Repository.Interfaces;
-using DT.Shared.Web.Results;
+using dotnet_core_blogs_architecture.blogs.Mediator.User.Commands.Shared;
+using dotnet_core_blogs_architecture.blogs.Mediator.User.Shared;
+using dotnet_core_blogs_architecture.blogs.Specification;
+using dotnet_core_blogs_architecture.Data.Results;
+using dotnet_core_blogs_architecture.infrastructure.Data;
 using MediatR;
-using Microsoft.Extensions.Logging;
 
-namespace DT.Identity.Core.User.Commands.Update;
+namespace dotnet_core_blogs_architecture.blogs.Mediator.User.Commands.Update;
 public class Handler : UserBaseHandler, IRequestHandler<CommandModel, ValidationResult>
 {
-	private readonly IRepository<Repository.Models.User> _userRepository;
+	private readonly IRepository<Data.Models.User> _userRepository;
 	private readonly IMapper _mapper;
 	private readonly ILogger _logger;
 
-	public Handler(IRepository<Repository.Models.User> userRepository, IMapper mapper, ILogger<Handler> logger) : base()
+	public Handler(IRepository<Data.Models.User> userRepository, IMapper mapper, ILogger<Handler> logger) : base()
 	{
 		_userRepository = userRepository;
 		_mapper = mapper;

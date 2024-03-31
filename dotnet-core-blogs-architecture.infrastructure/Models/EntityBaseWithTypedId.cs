@@ -1,4 +1,4 @@
-﻿namespace dotnet_core_blogs_architecture.Data.Models
+﻿namespace dotnet_core_blogs_architecture.infrastructure.Models
 {
     public abstract class EntityBaseWithTypedId<TId> : ValidatableObject, IEntityWithTypedId<TId>
     {

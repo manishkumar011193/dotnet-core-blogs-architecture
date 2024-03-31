@@ -1,8 +1,6 @@
-﻿using dotnet_core_blogs_architecture.blogs.Mediator.Comment.Shared;
-using dotnet_core_blogs_architecture.blogs.Repository.Specifications;
+﻿using dotnet_core_blogs_architecture.blogs.Specification;
+using dotnet_core_blogs_architecture.infrastructure.Interfaces;
 using FluentValidation;
-using DT.Shared.Repository.Interfaces;
-using dotnet_core_blogs_architecture.blogs.Specification;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.Comment.Commands.Shared
 {

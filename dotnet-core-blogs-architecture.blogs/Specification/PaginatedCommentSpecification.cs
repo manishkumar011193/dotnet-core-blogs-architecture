@@ -1,6 +1,7 @@
 ﻿using Ardalis.Specification;
 using dotnet_core_blogs_architecture.Data;
 using dotnet_core_blogs_architecture.Data.Models;
+using dotnet_core_blogs_architecture.infrastructure;
 using System.Linq.Expressions;
 
 namespace dotnet_core_blogs_architecture.blogs.Repository.Specifications

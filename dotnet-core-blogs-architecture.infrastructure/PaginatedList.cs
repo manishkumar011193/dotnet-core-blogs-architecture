@@ -1,4 +1,4 @@
-﻿namespace DT.Shared.Repository;
+﻿namespace dotnet_core_blogs_architecture.infrastructure;
 public class PaginatedList<T> : List<T>
 {
 	public int Page { get; private set; }

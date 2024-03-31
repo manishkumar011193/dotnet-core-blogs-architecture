@@ -1,8 +1,8 @@
-﻿using DT.Shared.Web.Results;
+﻿using dotnet_core_blogs_architecture.Data.Results;
 using MediatR;
 
-namespace DT.Identity.Core.User.Queries.GetById;
+namespace dotnet_core_blogs_architecture.blogs.Mediator.User.Queries.GetById;
 public class QueryModel : IRequest<ValidationResult>
 {
-	public int Id { get; set; }
+	public long Id { get; set; }
 }

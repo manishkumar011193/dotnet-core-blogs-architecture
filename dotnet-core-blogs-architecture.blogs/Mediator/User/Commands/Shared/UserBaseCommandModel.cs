@@ -1,4 +1,4 @@
-﻿namespace DT.Identity.Core.User.Commands.Shared;
+﻿namespace dotnet_core_blogs_architecture.blogs.Mediator.User.Commands.Shared;
 
 public abstract class UserBaseCommandModel
 {

@@ -1,4 +1,4 @@
-﻿namespace dotnet_core_blogs_architecture.blogs.Mediator.Post.Shared
+﻿namespace dotnet_core_blogs_architecture.blogs.Mediator.User.Shared
 {
     public class UserResponseModel
     {

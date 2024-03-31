@@ -1,11 +1,11 @@
-﻿namespace DT.Identity.Core.User.Commands.Shared;
+﻿namespace dotnet_core_blogs_architecture.blogs.Mediator.User.Commands.Shared;
 public abstract class UserBaseHandler
 {
     protected UserBaseHandler()
     {
     }
 
-	protected void AssignValues(UserBaseCommandModel request, dotnet_core_blogs_architecture.Data.Models.User userDetail, CancellationToken cancellationToken)
+	protected void AssignValues(UserBaseCommandModel request, Data.Models.User userDetail, CancellationToken cancellationToken)
 	{
 		userDetail.FirstName = request.FirstName;
 		userDetail.LastName = request.LastName;

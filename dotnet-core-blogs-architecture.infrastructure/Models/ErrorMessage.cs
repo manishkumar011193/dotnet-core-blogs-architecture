@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace dotnet_core_blogs_architecture.Data.Models;
+namespace dotnet_core_blogs_architecture.infrastructure.Models;
 
 public class ErrorMessage
 {

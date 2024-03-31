@@ -1,4 +1,4 @@
-﻿namespace dotnet_core_blogs_architecture.Data;
+﻿namespace dotnet_core_blogs_architecture.infrastructure;
 public abstract class PageQueryModel
 {
 	public int? Page { get; set; } = 1;

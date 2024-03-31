@@ -1,5 +1,6 @@
 ﻿using dotnet_core_blogs_architecture.Data;
 using dotnet_core_blogs_architecture.Data.Results;
+using dotnet_core_blogs_architecture.infrastructure;
 using MediatR;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.List;

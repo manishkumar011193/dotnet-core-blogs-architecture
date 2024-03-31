@@ -1,12 +1,6 @@
-﻿using dotnet_core_blogs_architecture.Data.RateLimiter;
-using Microsoft.AspNetCore.Builder;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Builder;
 
-namespace dotnet_core_blogs_architecture.Data
+namespace dotnet_core_blogs_architecture.infrastructure
 {
     public static class MiddlewareExtensions
     {

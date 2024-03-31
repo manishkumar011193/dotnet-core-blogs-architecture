@@ -1,4 +1,4 @@
-﻿using dotnet_core_blogs_architecture.Data.Data;
+﻿using dotnet_core_blogs_architecture.infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;

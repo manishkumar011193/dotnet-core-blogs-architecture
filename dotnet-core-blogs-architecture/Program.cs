@@ -1,5 +1,5 @@
 using dotnet_core_blogs_architecture.Data.Data;
-using dotnet_core_blogs_architecture.Data.RateLimiter;
+using dotnet_core_blogs_architecture.infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Distributed;
 

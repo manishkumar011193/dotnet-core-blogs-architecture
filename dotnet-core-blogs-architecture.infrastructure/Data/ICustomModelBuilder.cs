@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace dotnet_core_blogs_architecture.Data.Data
+namespace dotnet_core_blogs_architecture.infrastructure.Data
 {
     public interface ICustomModelBuilder
     {

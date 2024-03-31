@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using dotnet_core_blogs_architecture.blogs.Mediator.Comment.Shared;
-using dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.List;
-using dotnet_core_blogs_architecture.Data;
-using DT.Shared.Repository;
+using dotnet_core_blogs_architecture.infrastructure;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.Comment
 {

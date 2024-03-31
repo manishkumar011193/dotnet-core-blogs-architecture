@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
-using dotnet_core_blogs_architecture.blogs.Mediator.Comment.Queries.List;
+using dotnet_core_blogs_architecture.blogs.Mediator.Comment.Shared;
 using dotnet_core_blogs_architecture.blogs.Repository.Specifications;
 using dotnet_core_blogs_architecture.Data.Results;
+using dotnet_core_blogs_architecture.infrastructure;
+using dotnet_core_blogs_architecture.infrastructure.Interfaces;
 using MediatR;
-using Microsoft.Extensions.Logging;
-using DT.Shared.Repository.Interfaces;
-using dotnet_core_blogs_architecture.Data;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.Comment.Queries.List
 {
@@ -27,7 +26,7 @@ namespace dotnet_core_blogs_architecture.blogs.Mediator.Comment.Queries.List
             _logger.LogInformation("Fetching the comment list");
             var result = await _commentRepository.GetPagninated(new PaginatedCommentSpecification(query), query);
             _logger.LogInformation("Successfully fetched the comment list");
-            return new ValidObjectResult(_mapper.Map<PaginatedResponseModel<ResponseModel>>(result));
+            return new ValidObjectResult(_mapper.Map<PaginatedResponseModel<CommentResponseModel>>(result));
         }
     }
 }

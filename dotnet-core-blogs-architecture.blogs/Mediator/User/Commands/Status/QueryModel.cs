@@ -1,9 +1,9 @@
-﻿using DT.Shared.Web.Results;
+﻿using dotnet_core_blogs_architecture.Data.Results;
 using MediatR;
 
-namespace DT.Identity.Core.User.Commands.Status;
+namespace dotnet_core_blogs_architecture.blogs.Mediator.User.Commands.Status;
 public class QueryModel : IRequest<ValidationResult>
 {
-	public int Id { get; set; }
+	public long Id { get; set; }
 }
 

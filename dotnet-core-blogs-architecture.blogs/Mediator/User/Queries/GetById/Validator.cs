@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace DT.Identity.Core.User.Queries.GetById;
+namespace dotnet_core_blogs_architecture.blogs.Mediator.User.Queries.GetById;
 public class Validator : AbstractValidator<QueryModel>
 {
 	public Validator()

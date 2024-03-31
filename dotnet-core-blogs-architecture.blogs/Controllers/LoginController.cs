@@ -1,13 +1,16 @@
-﻿using dotnet_core_blogs_architecture.blogs.Models;
+﻿using Ardalis.Specification;
 using dotnet_core_blogs_architecture.blogs.Service;
+using dotnet_core_blogs_architecture.blogs.Specification;
 using dotnet_core_blogs_architecture.blogs.ViewModels;
-using dotnet_core_blogs_architecture.Data.Data;
+using dotnet_core_blogs_architecture.Data.Models;
+using dotnet_core_blogs_architecture.infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace dotnet_core_blogs_architecture.blogs.Controllers
 {
@@ -32,7 +35,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         {            
             if (!((String.IsNullOrEmpty(model.Email)) && (String.IsNullOrEmpty(model.Password))))
             {                
-                 var user = await _userRepository.Query().FirstOrDefaultAsync(x => x.Email == model.Email);               
+                 var user = await _userRepository.FirstOrDefaultAsync(new UserWithEmailSpecification(model.Email));               
                  var result = VerifyPassword(model.Password, user.PasswordHash, salt);
                 if(user != null && result)
                 {
@@ -71,6 +74,6 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
             var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlgorithm, keySize);
 
             return CryptographicOperations.FixedTimeEquals(hashToCompare, Convert.FromHexString(hash));
-        }
+        }       
     }
 }

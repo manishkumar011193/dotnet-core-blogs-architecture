@@ -1,6 +1,4 @@
-﻿using dotnet_core_blogs_architecture.blogs.Models;
-
-namespace dotnet_core_blogs_architecture.blogs.Service
+﻿namespace dotnet_core_blogs_architecture.blogs.Service
 {
     public interface ITokenService
     {

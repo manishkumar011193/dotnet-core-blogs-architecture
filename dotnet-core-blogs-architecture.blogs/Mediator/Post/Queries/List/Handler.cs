@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
-using dotnet_core_blogs_architecture.Data;
-using dotnet_core_blogs_architecture.Data.Data;
+using dotnet_core_blogs_architecture.blogs.Mediator.Post.Shared;
 using dotnet_core_blogs_architecture.Data.Results;
+using dotnet_core_blogs_architecture.infrastructure;
+using dotnet_core_blogs_architecture.infrastructure.Data;
 using MediatR;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.List
@@ -29,7 +30,7 @@ namespace dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.List
             _logger.LogInformation("Successfully fetched the post list");
 
             // Map the retrieved posts to response models and return them
-            return new ValidObjectResult(_mapper.Map<PaginatedResponseModel<ResponseModel>>(result));
+            return new ValidObjectResult(_mapper.Map<PaginatedResponseModel<PostResponseModel>>(result));
         }
     }
 }
