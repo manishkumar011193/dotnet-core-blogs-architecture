@@ -19,7 +19,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         #region GET
 
         [HttpGet]
-        public async Task<IActionResult> GetComments([FromQuery] dotnet_core_blogs_architecture.blogs.Mediator.Comment.Queries.List.QueryModel query)
+        public async Task<IActionResult> GetComments([FromQuery] Mediator.Comment.Queries.List.QueryModel query)
         {
             return new ObjectResult(await _mediator.Send(query));
         }
@@ -27,7 +27,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         [HttpGet("{commentId}")]
         public async Task<IActionResult> GetByIdAsync(int commentId)
         {
-            var commentDetails = await _mediator.Send(new dotnet_core_blogs_architecture.blogs.Mediator.Comment.Queries.GetById.QueryModel { Id = commentId });
+            var commentDetails = await _mediator.Send(new Mediator.Comment.Queries.GetById.QueryModel { Id = commentId });
             return new ObjectResult(commentDetails);
         }
 
@@ -36,7 +36,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         #region POST
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] dotnet_core_blogs_architecture.blogs.Mediator.Comment.Commands.Create.CommandModel command)
+        public async Task<IActionResult> PostAsync([FromBody] Mediator.Comment.Commands.Create.CommandModel command)
         {
             return new ObjectResult(await _mediator.Send(command));
         }
@@ -46,7 +46,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         #region PUT
 
         [HttpPut]
-        public async Task<IActionResult> PutAsync([FromBody] dotnet_core_blogs_architecture.blogs.Mediator.Comment.Commands.Update.CommandModel command)
+        public async Task<IActionResult> PutAsync([FromBody] Mediator.Comment.Commands.Update.CommandModel command)
         {
             return new ObjectResult(await _mediator.Send(command));
         }        

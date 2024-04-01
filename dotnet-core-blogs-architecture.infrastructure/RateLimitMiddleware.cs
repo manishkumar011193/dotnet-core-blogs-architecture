@@ -1,8 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Caching.Distributed;
-using System;
-using System.Threading.Tasks;
 namespace dotnet_core_blogs_architecture.infrastructure
 {
     public class RateLimitMiddleware

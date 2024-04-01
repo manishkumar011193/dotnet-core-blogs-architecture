@@ -14,7 +14,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace dotnet_core_blogs_architecture.blogs.Controllers
 {
-    public class LoginController : Controller
+    public class AuthenticationController : Controller
     {
         private readonly SignInManager<User> _signInManager;
         private readonly IRepository<User> _userRepository;
@@ -22,58 +22,50 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         const int keySize = 64;
         byte[] salt = RandomNumberGenerator.GetBytes(keySize);
         const int iterations = 350000;
-        public LoginController(SignInManager<User> signInManager, IRepository<User> userRepository, ITokenService tokenService)
+
+        public AuthenticationController(SignInManager<User> signInManager, IRepository<User> userRepository, ITokenService tokenService)
         {
             _signInManager = signInManager;
             _userRepository = userRepository;
             _tokenService = tokenService;
         }
+
         [HttpPost]
         [AllowAnonymous]
         [Route("login")]
         public async Task<IActionResult> Login(LoginVM model)
-        {            
-            if (!((String.IsNullOrEmpty(model.Email)) && (String.IsNullOrEmpty(model.Password))))
-            {                
-                 var user = await _userRepository.FirstOrDefaultAsync(new UserWithEmailSpecification(model.Email));               
-                 var result = VerifyPassword(model.Password, user.PasswordHash, salt);
-                if(user != null && result)
+        {
+            if (!(string.IsNullOrEmpty(model.Email) || string.IsNullOrEmpty(model.Password)))
+            {
+                var user = await _userRepository.FirstOrDefaultAsync(new UserWithEmailSpecification(model.Email));
+                if (user == null)
                 {
-                    var token = await _tokenService.BuidToken(user);                   
+                    return BadRequest(new { Message = "Incorrect username or password" });
+                }
+
+                var result = VerifyPassword(model.Password, user.PasswordHash, salt);
+                if (result)
+                {
+                    var token = await _tokenService.BuidToken(user);
                     return Json(token);
                 }
                 else
                 {
-                    return BadRequest(new {Message = "Wrong userName and Password"});
-                }                            
+                    return BadRequest(new { Message = "Incorrect username or password" });
+                }
             }
 
-            // If we got this far, something failed, redisplay form
-            return BadRequest(new {Message = "Provide both UserName and Password"});
+            return BadRequest(new { Message = "Please provide both username and password" });
         }
-        
-       
-        HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
 
-        string HashPasword(string password, out byte[] salt)
-        {
-            salt = RandomNumberGenerator.GetBytes(keySize);
 
-            var hash = Rfc2898DeriveBytes.Pbkdf2(
-                Encoding.UTF8.GetBytes(password),
-                salt,
-                iterations,
-                hashAlgorithm,
-                keySize);
-
-            return Convert.ToHexString(hash);
-        }
         bool VerifyPassword(string password, string hash, byte[] salt)
         {
+            HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
             salt = RandomNumberGenerator.GetBytes(keySize);
             var hashToCompare = Rfc2898DeriveBytes.Pbkdf2(password, salt, iterations, hashAlgorithm, keySize);
 
             return CryptographicOperations.FixedTimeEquals(hashToCompare, Convert.FromHexString(hash));
-        }       
+        }
     }
 }

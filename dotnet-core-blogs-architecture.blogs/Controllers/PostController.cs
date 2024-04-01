@@ -5,7 +5,6 @@ using dotnet_core_blogs_architecture.blogs.Mediator.Comment.Shared;
 using dotnet_core_blogs_architecture.blogs.Mediator.Post.Shared;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Net.NetworkInformation;
 
 namespace dotnet_core_blogs_architecture.blogs.Controllers
 {
@@ -22,7 +21,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
 
         #region GET
 
-        [ProducesResponseType(typeof(Mediator.Post.Shared.PostResponseModel), 200)]
+        [ProducesResponseType(typeof(PostResponseModel), 200)]
         [HttpGet("{Id}")]
         public async Task<IActionResult> GetByIdAsync(int Id)
         {
@@ -40,7 +39,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
 
         #region POST
 
-        [ProducesResponseType(typeof(Mediator.Post.Shared.PostResponseModel), 200)]
+        [ProducesResponseType(typeof(PostResponseModel), 200)]
         [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] Mediator.Post.Commands.Create.CommandModel command)
         {
@@ -51,7 +50,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
 
         #region PUT
 
-        [ProducesResponseType(typeof(Mediator.Post.Shared.PostResponseModel), 200)]
+        [ProducesResponseType(typeof(PostResponseModel), 200)]
         [HttpPut("{Id}")]
         public async Task<IActionResult> PutAsync(int Id, [FromBody] Mediator.Post.Commands.Update.CommandModel command)
         {

@@ -58,7 +58,7 @@ namespace DT.Identity.Api.Controllers
         }
 
         [ProducesResponseType(typeof(UserResponseModel), 200)]
-        [HttpPut("{userId}/Status")]
+        [HttpPut("{userId}/status")]
         public async Task<IActionResult> SetUserStatusAsync(int userId)
         {
             var userDetails = await _mediator.Send(new dotnet_core_blogs_architecture.blogs.Mediator.Comment.Commands.Status.QueryModel { Id = userId });
