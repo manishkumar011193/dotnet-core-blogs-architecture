@@ -12,44 +12,52 @@ namespace dotnet_core_blogs_architecture.infrastructure
         private readonly TimeSpan _timeWindow;
         private readonly int _maxRequests;
 
-        public RateLimitMiddleware(RequestDelegate next, IDistributedCache cache, TimeSpan timeWindow, int maxRequests)
+        public RateLimitMiddleware(RequestDelegate next, IDistributedCache cache)
         {
             _next = next;
             _cache = cache;
-            _timeWindow = timeWindow;
-            _maxRequests = maxRequests;
+            _timeWindow = TimeSpan.FromMinutes(1);
+            _maxRequests = 100;
         }
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context, IDistributedCache cache)
         {
-            var ipAddress = context.Connection.RemoteIpAddress.ToString();
-            var cacheKey = $"RateLimit:{ipAddress}";
+            try
+            {
+                var ipAddress = context.Connection.RemoteIpAddress.ToString();
+                var cacheKey = $"RateLimit:{ipAddress}";
 
-            var requestCount = await _cache.GetStringAsync(cacheKey);
-            if (requestCount == null)
-            {
-                requestCount = "1";
-                var options = new DistributedCacheEntryOptions
+                var requestCount = await _cache.GetStringAsync(cacheKey);
+                if (requestCount == null)
                 {
-                    AbsoluteExpirationRelativeToNow = _timeWindow
-                };
-                await _cache.SetStringAsync(cacheKey, requestCount, options);
-            }
-            else
-            {
-                var count = int.Parse(requestCount);
-                if (count >= _maxRequests)
-                {
-                    context.Response.StatusCode = StatusCodes.Status429TooManyRequests;
-                    await context.Response.WriteAsync("Rate limit exceeded. Try again later.");
-                    return;
+                    requestCount = "1";
+                    var options = new DistributedCacheEntryOptions
+                    {
+                        AbsoluteExpirationRelativeToNow = _timeWindow
+                    };
+                    await _cache.SetStringAsync(cacheKey, requestCount, options);
                 }
                 else
                 {
-                    count++;
-                    await _cache.SetStringAsync(cacheKey, count.ToString());
+                    var count = int.Parse(requestCount);
+                    if (count >= _maxRequests)
+                    {
+                        context.Response.StatusCode = StatusCodes.Status429TooManyRequests;
+                        await context.Response.WriteAsync("Rate limit exceeded. Try again later.");
+                        return;
+                    }
+                    else
+                    {
+                        count++;
+                        await _cache.SetStringAsync(cacheKey, count.ToString());
+                    }
                 }
+                await _next(context);
             }
-            await _next(context);
+            catch(Exception ex)
+            {
+              
+            }
+         
         }
     }
 }

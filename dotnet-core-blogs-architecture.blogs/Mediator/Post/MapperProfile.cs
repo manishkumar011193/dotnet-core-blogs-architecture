@@ -8,10 +8,10 @@ namespace dotnet_core_blogs_architecture.blogs.Mediator.Post
     {
         public MapperProfile()
         {
-            CreateMap<Data.Models.Post, Shared.PostResponseModel>(MemberList.None)
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-                .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
-                .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Content));
+            //CreateMap<Data.Models.Post, Shared.PostResponseModel>(MemberList.None)
+            //    .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
+            //    .ForMember(dest => dest.Title, opt => opt.MapFrom(src => src.Title))
+            //    .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Content));
 
             CreateMap<Data.Models.Post, PostResponseModel>(MemberList.None);
 
