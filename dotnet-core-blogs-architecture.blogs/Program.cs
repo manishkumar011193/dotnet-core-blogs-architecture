@@ -1,5 +1,5 @@
 using dotnet_core_blogs_architecture.blogs;
-using dotnet_core_blogs_architecture.blogs.Mediator.Comment.Commands.Create;
+using dotnet_core_blogs_architecture.blogs.Mediator.Post.Commands.Create;
 using dotnet_core_blogs_architecture.Data.Data;
 using dotnet_core_blogs_architecture.infrastructure;
 using dotnet_core_blogs_architecture.infrastructure.Cache;
