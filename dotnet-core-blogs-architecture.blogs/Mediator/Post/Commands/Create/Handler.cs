@@ -29,10 +29,17 @@ public class Handler : Shared.PostBaseHandler, IRequestHandler<CommandModel, Val
         };
 
         // Save the post entity
+        AssignValues(request, postDetail, cancellationToken);
         await _postRepository.AddAsync(postDetail, cancellationToken);
-        await _postRepository.SaveChangesAsync(cancellationToken);
+        var postSaved = await _postRepository.SaveChangesAsync(cancellationToken);
+        if (postSaved <= 0)
+        {
+            _logger.LogError("Unable to save the charge code with description: {description} and code: {code}", postDetail.Content, postDetail.Title);
+            return new InvalidValidationResult("Summary", "There was a server error saving 'Charge Code Data'");
+        }
 
         // Map the saved post to a response model and return it
+        _logger.LogInformation("Successfully created the post with Id: {Id}", postDetail.Id);
         return new CreatedResult(_mapper.Map<Post.Shared.PostResponseModel>(postDetail));
     }
 

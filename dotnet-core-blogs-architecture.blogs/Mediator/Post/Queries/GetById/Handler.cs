@@ -2,17 +2,18 @@
 using dotnet_core_blogs_architecture.blogs.Specification;
 using dotnet_core_blogs_architecture.Data.Results;
 using dotnet_core_blogs_architecture.infrastructure.Data;
+using dotnet_core_blogs_architecture.infrastructure.Interfaces;
 using MediatR;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.GetById
 {
     public class Handler : IRequestHandler<QueryModel, ValidationResult>
     {
-        private readonly IRepository<Data.Models.Post> _postRepository;
+        private readonly IReadRepository<Data.Models.Post> _postRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<Handler> _logger;
 
-        public Handler(IRepository<Data.Models.Post> postRepository, IMapper mapper, ILogger<Handler> logger)
+        public Handler(IReadRepository<Data.Models.Post> postRepository, IMapper mapper, ILogger<Handler> logger)
         {
             _postRepository = postRepository;
             _mapper = mapper;

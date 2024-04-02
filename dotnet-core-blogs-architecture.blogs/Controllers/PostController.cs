@@ -23,7 +23,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
 
         [ProducesResponseType(typeof(PostResponseModel), 200)]
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetByIdAsync(int Id)
+        public async Task<IActionResult> GetByIdAsync(long Id)
         {
             var postDetails = await _mediator.Send(new Mediator.Post.Queries.GetById.QueryModel { Id = Id });
             return new ObjectResult(postDetails);
@@ -52,7 +52,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
 
         [ProducesResponseType(typeof(PostResponseModel), 200)]
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutAsync(int Id, [FromBody] Mediator.Post.Commands.Update.CommandModel command)
+        public async Task<IActionResult> PutByIdAsync(long Id, [FromBody] Mediator.Post.Commands.Update.CommandModel command)
         {
             command.Id = Id;
             return new ObjectResult(await _mediator.Send(command));

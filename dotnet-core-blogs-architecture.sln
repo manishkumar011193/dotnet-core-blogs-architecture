@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-core-blogs-architect
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-core-blogs-architecture.blogs", "dotnet-core-blogs-architecture.blogs\dotnet-core-blogs-architecture.blogs.csproj", "{3340CABC-160D-4DC2-A8D1-D4948F10DC99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-core-blogs-architecture.Data", "dotnet-core-blogs-architecture.Data\dotnet-core-blogs-architecture.Data.csproj", "{95DB0471-A61A-4DC3-9A7E-C3B209DDC214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dotnet-core-blogs-architecture.Data", "dotnet-core-blogs-architecture.Data\dotnet-core-blogs-architecture.Data.csproj", "{95DB0471-A61A-4DC3-9A7E-C3B209DDC214}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-core-blogs-architecture.UnitTest", "dotnet-core-blogs-architecture.UnitTest\dotnet-core-blogs-architecture.UnitTest.csproj", "{CF866008-B5AE-4A89-AD39-9171E8D7444E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{95DB0471-A61A-4DC3-9A7E-C3B209DDC214}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95DB0471-A61A-4DC3-9A7E-C3B209DDC214}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95DB0471-A61A-4DC3-9A7E-C3B209DDC214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF866008-B5AE-4A89-AD39-9171E8D7444E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF866008-B5AE-4A89-AD39-9171E8D7444E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF866008-B5AE-4A89-AD39-9171E8D7444E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF866008-B5AE-4A89-AD39-9171E8D7444E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

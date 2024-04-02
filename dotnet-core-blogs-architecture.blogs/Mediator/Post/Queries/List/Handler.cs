@@ -1,22 +1,25 @@
 ﻿using AutoMapper;
 using dotnet_core_blogs_architecture.blogs.Mediator.Post.Shared;
+using dotnet_core_blogs_architecture.blogs.Repository.Specifications;
 using dotnet_core_blogs_architecture.Data.Results;
 using dotnet_core_blogs_architecture.infrastructure;
 using dotnet_core_blogs_architecture.infrastructure.Data;
+using dotnet_core_blogs_architecture.infrastructure.Interfaces;
 using MediatR;
 
 namespace dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.List
 {
     public class Handler : IRequestHandler<QueryModel, ValidationResult>
     {
-        private readonly IRepository<Data.Models.Post> _postRepository;
+        private readonly IReadRepository<Data.Models.Post> _postRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<Handler> _logger;
 
-        public Handler(IRepository<Data.Models.Post> postRepository, IMapper mapper, ILogger<Handler> logger)
+        public Handler(IMapper mapper, IReadRepository<Data.Models.Post> postRepository, ILogger<Handler> logger): base()
         {
-            _postRepository = postRepository;
+           
             _mapper = mapper;
+            _postRepository = postRepository;
             _logger = logger;
         }
 
@@ -25,7 +28,7 @@ namespace dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.List
             _logger.LogInformation("Fetching the post list");
 
             // Retrieve a paginated list of posts
-            var result = await _postRepository.ListAsync();
+            var result = await _postRepository.GetPagninated(new PaginatedPostSpecification(query), query);
 
             _logger.LogInformation("Successfully fetched the post list");
 
