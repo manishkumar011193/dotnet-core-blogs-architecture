@@ -21,12 +21,12 @@ namespace dotnet_core_blogs_architecture.blogs.Mediator.Comment.Queries.GetById
         private readonly ILogger<Handler> _logger;
         private readonly RedisCacheService _cacheService;
 
-        public Handler(IRepository<Data.Models.Comment> commentRepository, IMapper mapper, /*RedisCacheService cacheService,*/ ILogger<Handler> logger)
+        public Handler(IRepository<Data.Models.Comment> commentRepository, IMapper mapper, RedisCacheService cacheService, ILogger<Handler> logger)
         {
             _commentRepository = commentRepository;
             _mapper = mapper;
             _logger = logger;
-            //_cacheService = cacheService;
+            _cacheService = cacheService;
         }
 
         public async Task<ValidationResult> Handle(QueryModel query, CancellationToken cancellationToken)
