@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 
 namespace DT.Identity.UnitTests.ApiTests.Controllers;
-public class PostControllerTests
+public class PostsControllerTests
 {
     private Mock<IMediator> mockMediator;
-    private PostController controller;
+    private PostsController controller;
 
-    public PostControllerTests()
+    public PostsControllerTests()
     {
         this.mockMediator = new Mock<IMediator>();
-        this.controller = new PostController(mockMediator.Object);
+        this.controller = new PostsController(mockMediator.Object);
     }
 
     [Fact]
@@ -39,14 +39,6 @@ public class PostControllerTests
     {
         mockMediator.Setup(c => c.Send(It.IsAny<dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.GetById.QueryModel>(), default)).ReturnsAsync(AutoFixtureHelper.Fixture.Create<ValidObjectResult>());
         var result = await controller.GetByIdAsync(AutoFixtureHelper.Fixture.Create<dotnet_core_blogs_architecture.blogs.Mediator.Post.Queries.GetById.QueryModel>().Id);
-        Assert.IsType<ObjectResult>(result);
-    }
-
-    [Fact]
-    public async Task ShouldPassPut()
-    {
-        mockMediator.Setup(c => c.Send(It.IsAny<dotnet_core_blogs_architecture.blogs.Mediator.Post.Commands.Update.CommandModel>(), default)).ReturnsAsync(AutoFixtureHelper.Fixture.Create<dotnet_core_blogs_architecture.Data.Results.CreatedResult>());
-        var result = await controller.PutByIdAsync(1,AutoFixtureHelper.Fixture.Create<dotnet_core_blogs_architecture.blogs.Mediator.Post.Commands.Update.CommandModel>());
         Assert.IsType<ObjectResult>(result);
     }
 }

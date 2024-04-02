@@ -47,21 +47,5 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         }
 
         #endregion
-<<<<<<< HEAD:dotnet-core-blogs-architecture.blogs/Controllers/PostController.cs
-
-        #region PUT
-
-        [ProducesResponseType(typeof(PostResponseModel), 200)]
-        [HttpPut("{Id}")]
-        public async Task<IActionResult> PutByIdAsync(long Id, [FromBody] Mediator.Post.Commands.Update.CommandModel command)
-        {
-            command.Id = Id;
-            return new ObjectResult(await _mediator.Send(command));
-        }
-       
-
-        #endregion
-=======
->>>>>>> 68ea300e9a730c4009f5283170e002e436eba48b:dotnet-core-blogs-architecture.blogs/Controllers/PostsController.cs
     }
 }
