@@ -32,7 +32,7 @@ builder.Services.AddDbContext<BlogDbContext>(options => options.UseSqlServer(bui
 builder.Services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
 var redisConnectionString = builder.Configuration.GetConnectionString("Redis");
-builder.Services.AddSingleton(new RedisCacheService(redisConnectionString));
+//builder.Services.AddSingleton(new RedisCacheService(redisConnectionString));
 //builder.Services.AddScoped<IDbUserContext, DbUserContext>();
 
 // Add MediatR

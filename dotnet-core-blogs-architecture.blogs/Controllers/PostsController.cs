@@ -10,11 +10,11 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PostController : ControllerBase
+    public class PostsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public PostController(IMediator mediator)
+        public PostsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -45,19 +45,6 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         {
             return new ObjectResult(await _mediator.Send(command));
         }
-
-        #endregion
-
-        #region PUT
-
-        [ProducesResponseType(typeof(PostResponseModel), 200)]
-        [HttpPut("{Id}")]
-        public async Task<IActionResult> PutAsync(int Id, [FromBody] Mediator.Post.Commands.Update.CommandModel command)
-        {
-            command.Id = Id;
-            return new ObjectResult(await _mediator.Send(command));
-        }
-       
 
         #endregion
     }
