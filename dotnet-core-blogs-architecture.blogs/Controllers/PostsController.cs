@@ -10,11 +10,11 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PostController : ControllerBase
+    public class PostsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public PostController(IMediator mediator)
+        public PostsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -47,6 +47,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
         }
 
         #endregion
+<<<<<<< HEAD:dotnet-core-blogs-architecture.blogs/Controllers/PostController.cs
 
         #region PUT
 
@@ -60,5 +61,7 @@ namespace dotnet_core_blogs_architecture.blogs.Controllers
        
 
         #endregion
+=======
+>>>>>>> 68ea300e9a730c4009f5283170e002e436eba48b:dotnet-core-blogs-architecture.blogs/Controllers/PostsController.cs
     }
 }
